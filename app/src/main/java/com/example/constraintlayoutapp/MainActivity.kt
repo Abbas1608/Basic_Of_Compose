@@ -30,6 +30,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -72,36 +73,50 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-           // ConstarintLayout()
+            LazyColumn {
+                items(1){
+
+                    //   1. ConstarintLayout()
 //            animationButton()
 //            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center)
 //            {
 //                CircularProgressBar(0.8f,100)
 //            }
-
+//          2.
 //            Box (modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center)
 //            {
 //                MultiColorText()
 //            }
 
-            //Drop down
+                    //Drop down
                     Box (modifier = Modifier.padding(top = 30.dp),
                         contentAlignment = Alignment.Center)
-            {
-                DropDown("Hello World ",
-                      modifier = Modifier.fillMaxSize())
-                {
-                    // here passing all after open drop then display element
-                    Text(text =  " This is my first drop down ",
-                        fontSize = 25.sp,
-                        modifier = Modifier.fillMaxWidth()
-                            .height(100.dp)
-                            .background(Color.Green)
-                            .align(Alignment.Center)
-                    )
+                    {
+                        DropDown("Hello World ",
+                            modifier = Modifier.fillMaxSize())
+                        {
+                            // here passing all after open drop then display element
+                            Text(text =  " This is my first drop down ",
+                                fontSize = 25.sp,
+                                modifier = Modifier.fillMaxWidth()
+                                    .height(100.dp)
+                                    .background(Color.Green)
+                                    .align(Alignment.Center)
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(40.dp))
 
+                    Box(
+                        contentAlignment = Alignment.Center,
+
+                        ) {
+                        Navigation()
+                    }
                 }
+
             }
+
 
         }
 
