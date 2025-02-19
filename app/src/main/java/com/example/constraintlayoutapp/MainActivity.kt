@@ -1,6 +1,6 @@
 package com.example.constraintlayoutapp
 
-import android.R
+import com.example.constraintlayoutapp.R
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,6 +16,7 @@ import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.snapping.SnapPosition
@@ -31,9 +32,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -49,7 +52,9 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.layoutId
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -63,6 +68,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
+import androidx.constraintlayout.compose.HorizontalAlign
 import com.example.constraintlayoutapp.ui.theme.ConstraintLayoutAppTheme
 import kotlinx.coroutines.Delay
 import java.nio.file.WatchEvent
@@ -376,7 +382,99 @@ fun DropDown(
 
 }
 
+//@Preview(showBackground = true)
+@Composable
+fun cardBox(image: Painter, text: String)
+{
+        Card(
+            modifier = Modifier.height(180.dp)
+                .width(180.dp)
+                .padding(
+                    start = 25.dp,
+                    top = 20.dp)
+        ) {
+            Image(
+                painter = image, // Directly using the image parameter
+                contentDescription = " ",
+                modifier = Modifier.size(100.dp)
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = 10.dp)
+            )
+            Spacer(modifier = Modifier.height(10.dp))
 
+                Text(text = text, modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    , fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
+        }
+    }
+
+@Preview(showBackground = true)
+@Composable
+fun mainList() {
+    val image1 = painterResource(R.drawable.cylinder)
+    val image2 = painterResource(R.drawable.cube)
+    val image3 = painterResource(R.drawable.sphere)
+    val image4 = painterResource(R.drawable.triangular_prism)
+
+
+    Spacer(modifier = Modifier.height(40.dp).fillMaxWidth())
+    
+
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        item{
+//1
+            Row {
+                cardBox(image1,"dcijn")
+                cardBox(image2,"dcijn")
+            }
+            Row {
+                cardBox(image3,"dcijn")
+                cardBox(image4,"dcijn")
+            }
+//2
+            Row {
+                cardBox(image1,"dcijn")
+                cardBox(image2,"dcijn")
+            }
+            Row {
+                cardBox(image3,"dcijn")
+                cardBox(image4,"dcijn")
+            }
+//3
+            Row {
+                cardBox(image1,"dcijn")
+                cardBox(image2,"dcijn")
+            }
+            Row {
+                cardBox(image3,"dcijn")
+                cardBox(image4,"dcijn")
+            }
+//4
+            Row {
+                cardBox(image1,"dcijn")
+                cardBox(image2,"dcijn")
+            }
+            Row {
+                cardBox(image3,"dcijn")
+                cardBox(image4,"dcijn")
+            }
+//5
+            Row {
+                cardBox(image1,"dcijn")
+                cardBox(image2,"dcijn")
+            }
+            Row {
+                cardBox(image3,"dcijn")
+                cardBox(image4,"dcijn")
+            }
+        }
+    }
+}
 
 
 
